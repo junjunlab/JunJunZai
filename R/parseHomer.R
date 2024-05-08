@@ -36,6 +36,7 @@ parseHomer <- function(homerDir = NULL,
       experiment <- sapply(strsplit(info[2],split = "\\/"),"[",2)
       matchs <- 0
     }else if(type == "novo"){
+      consensus <- sapply(strsplit(info[1],split = ">"),"[",2)
       tf_tmp <- sapply(strsplit(info[2],split = "\\("),"[",1)
       tf <- sapply(strsplit(tf_tmp,split = "\\:|\\/"),"[",2)
       experiment <- sapply(strsplit(info[2],split = "\\/"),"[",2)
