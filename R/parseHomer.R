@@ -38,6 +38,7 @@ parseHomer <- function(homerDir = NULL,
     }else if(type == "novo"){
       tf_tmp <- sapply(strsplit(info[2],split = "\\("),"[",1)
       tf <- sapply(strsplit(tf_tmp,split = "\\:|\\/"),"[",2)
+      experiment <- sapply(strsplit(info[2],split = "\\/"),"[",2)
       matchs_tmp <- sapply(strsplit(info[2],split = "\\/"),"[",3)
 
       # check value
