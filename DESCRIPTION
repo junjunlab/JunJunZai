@@ -20,3 +20,4 @@ Imports:
     seqLogo,
     stats,
     TFBSTools
+biocViews: TFBSTools,monaLisa

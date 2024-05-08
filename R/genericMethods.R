@@ -114,7 +114,7 @@ setGeneric("plotMotifHeatmap",function(object,type = c("known","novo"),
 #' @param object homerResult.
 #'
 #' @import ComplexHeatmap
-#' @importFrom dplyr select filter mutate
+#' @importFrom dplyr select filter mutate if_else
 #' @import methods
 #' @importFrom stats as.dist hclust
 #' @importFrom TFBSTools PWMatrix PFMatrixList
