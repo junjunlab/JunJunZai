@@ -1,12 +1,22 @@
 Package: JunJunZai
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Title: A Package to Visualize Homer Output Results
+Version: 0.0.1
+Author: Jun Zhang
+Maintainer: Jun Zhang <3219030654@stu.cpu.edu.cn>
+BugReports: https://github.com/junjunlab/JunJunZai/issues
+Description: Dealing with homer sftware output results and visualizing with complexheatmap.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Imports: 
+    ComplexHeatmap,
+    dplyr,
+    ggseqlogo,
+    grid,
+    magrittr,
+    methods,
+    monaLisa,
+    seqLogo,
+    stats,
+    TFBSTools
