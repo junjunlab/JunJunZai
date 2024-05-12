@@ -24,6 +24,7 @@ annoSeqlogo <- getFromNamespace("annoSeqlogo","monaLisa")
 #' @import grid
 #'
 #' @return A polygon grob.
+#' @export
 seqLogoGrob2 <- function(x, xmax = NULL, ymax = 2.0, ic.scale = TRUE,
                          xjust = c("left", "center", 'right')) {
   stopifnot(is(x, "PFMatrix"))
