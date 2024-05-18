@@ -9,7 +9,8 @@ seqLogoGrob2(
   xmax = NULL,
   ymax = 2,
   ic.scale = TRUE,
-  xjust = c("left", "center", "right")
+  xjust = c("left", "center", "right"),
+  vp = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ viewport.}
 \item{xjust}{A character scalar specifying the horizontal adjustment of the
 sequence log withint the viewport; one of \code{"left"}, \code{"center"}
 or \code{"right"}.}
+
+\item{vp}{vp for polygonGrob, default null.}
 }
 \value{
 A polygon grob.

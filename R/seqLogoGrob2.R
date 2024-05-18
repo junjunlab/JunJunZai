@@ -20,13 +20,15 @@ annoSeqlogo <- getFromNamespace("annoSeqlogo","monaLisa")
 #'     sequence log withint the viewport; one of \code{"left"}, \code{"center"}
 #'     or \code{"right"}.
 #' @param ic.scale whether scale to bits or probability, default TRUE.
+#' @param vp vp for polygonGrob, default null.
 #'
 #' @import grid
 #'
 #' @return A polygon grob.
 #' @export
 seqLogoGrob2 <- function(x, xmax = NULL, ymax = 2.0, ic.scale = TRUE,
-                         xjust = c("left", "center", 'right')) {
+                         xjust = c("left", "center", 'right'),
+                         vp = NULL) {
   stopifnot(is(x, "PFMatrix"))
   stopifnot(is.null(xmax) ||
               (is.numeric(xmax) && length(xmax) == 1L && xmax > 0))
@@ -82,5 +84,6 @@ seqLogoGrob2 <- function(x, xmax = NULL, ymax = 2.0, ic.scale = TRUE,
 
   grid::polygonGrob(x = x, y = y, id = letters$id,
                     name = as.character(ncol(xm)),
-                    gp = grid::gpar(fill = letters$fill, col = "transparent"))
+                    gp = grid::gpar(fill = letters$fill, col = "transparent"),
+                    vp = vp)
 }
