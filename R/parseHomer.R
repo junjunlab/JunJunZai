@@ -190,41 +190,58 @@ preparePFMmat <- function(homerDir = NULL,
 #'
 #' @param homerDir the path of homer output data.
 #' @param motifIndex the numbers of motif index.
+#' @param novo whether parse de novo motif data, default TRUE.
+#' @param known whether parse de known motif data, default TRUE.
 #'
 #' @return homerResult object
 #' @export
 loadHomerRes <- function(homerDir = NULL,
-                         motifIndex = NULL){
+                         motifIndex = NULL,
+                         novo = TRUE,
+                         known = TRUE){
   # ============================================================================
   # deal with known motif
   # ============================================================================
   # extract known motif
-  known <- parseHomer(homerDir = homerDir,
-                      motifIndex = motifIndex,
-                      type = "known")
+  if(known == TRUE){
+    known <- parseHomer(homerDir = homerDir,
+                        motifIndex = motifIndex,
+                        type = "known")
 
-  known_pwm <- parseHomerMotif(homerDir = homerDir,
+    known_pwm <- parseHomerMotif(homerDir = homerDir,
+                                 motifIndex = motifIndex,
+                                 type = "known")
+
+    known_pfm <- preparePFMmat(homerDir = homerDir,
                                motifIndex = motifIndex,
                                type = "known")
+  }else{
+    known <- NULL
+    known_pwm <- NULL
+    known_pfm <- NULL
+  }
 
-  known_pfm <- preparePFMmat(homerDir = homerDir,
-                             motifIndex = motifIndex,
-                             type = "known")
   # ============================================================================
   # deal with novo motif
   # ============================================================================
   # extract novo motif
-  novo <- parseHomer(homerDir = homerDir,
-                     motifIndex = motifIndex,
-                     type = "novo")
+  if(novo == TRUE){
+    novo <- parseHomer(homerDir = homerDir,
+                       motifIndex = motifIndex,
+                       type = "novo")
 
-  novo_pwm <- parseHomerMotif(homerDir = homerDir,
+    novo_pwm <- parseHomerMotif(homerDir = homerDir,
+                                motifIndex = motifIndex,
+                                type = "novo")
+
+    novo_pfm <- preparePFMmat(homerDir = homerDir,
                               motifIndex = motifIndex,
                               type = "novo")
-
-  novo_pfm <- preparePFMmat(homerDir = homerDir,
-                            motifIndex = motifIndex,
-                            type = "novo")
+  }else{
+    novo <- NULL
+    novo_pwm <- NULL
+    novo_pfm <- NULL
+  }
 
 
   # ============================================================================

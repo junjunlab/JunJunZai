@@ -4,12 +4,16 @@
 \alias{loadHomerRes}
 \title{parse homer output and assemble into homerResult object}
 \usage{
-loadHomerRes(homerDir = NULL, motifIndex = NULL)
+loadHomerRes(homerDir = NULL, motifIndex = NULL, novo = TRUE, known = TRUE)
 }
 \arguments{
 \item{homerDir}{the path of homer output data.}
 
 \item{motifIndex}{the numbers of motif index.}
+
+\item{novo}{whether parse de novo motif data, default TRUE.}
+
+\item{known}{whether parse de known motif data, default TRUE.}
 }
 \value{
 homerResult object
