@@ -4,7 +4,13 @@
 \alias{loadHomerRes}
 \title{parse homer output and assemble into homerResult object}
 \usage{
-loadHomerRes(homerDir = NULL, motifIndex = NULL, novo = TRUE, known = TRUE)
+loadHomerRes(
+  homerDir = NULL,
+  motifIndex = NULL,
+  novo = TRUE,
+  known = TRUE,
+  pattern = NULL
+)
 }
 \arguments{
 \item{homerDir}{the path of homer output data.}
@@ -14,6 +20,8 @@ loadHomerRes(homerDir = NULL, motifIndex = NULL, novo = TRUE, known = TRUE)
 \item{novo}{whether parse de novo motif data, default TRUE.}
 
 \item{known}{whether parse de known motif data, default TRUE.}
+
+\item{pattern}{The pattern to extract de novo match score, default NULL.}
 }
 \value{
 homerResult object

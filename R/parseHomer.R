@@ -9,12 +9,14 @@ globalVariables(c(".", "BackgroundPercent", "TargetPercent", "if_else",
 #' @param homerDir the path of homer output data.
 #' @param motifIndex the numbers of motif index.
 #' @param type the homer output type results to choose, "known" or "novo".
+#' @param pattern The pattern to extract de novo match score, default NULL.
 #'
 #' @return data.frame
 #' @export
 parseHomer <- function(homerDir = NULL,
                        motifIndex = NULL,
-                       type = c("known","novo")){
+                       type = c("known","novo"),
+                       pattern = NULL){
   type <- match.arg(type,c("known","novo"))
 
   if(type == "known"){
@@ -48,6 +50,11 @@ parseHomer <- function(homerDir = NULL,
       }
 
       matchs <- sapply(strsplit(matchs_tmp,split = "\\(|\\)"),"[",2) %>% as.numeric()
+
+      if(is.na(matchs)){
+        matchs <- sapply(strsplit(info[2],split = pattern[1]),"[",as.numeric(pattern[2])) %>%
+          as.numeric()
+      }
     }
 
 
@@ -192,13 +199,15 @@ preparePFMmat <- function(homerDir = NULL,
 #' @param motifIndex the numbers of motif index.
 #' @param novo whether parse de novo motif data, default TRUE.
 #' @param known whether parse de known motif data, default TRUE.
+#' @param pattern The pattern to extract de novo match score, default NULL.
 #'
 #' @return homerResult object
 #' @export
 loadHomerRes <- function(homerDir = NULL,
                          motifIndex = NULL,
                          novo = TRUE,
-                         known = TRUE){
+                         known = TRUE,
+                         pattern = NULL){
   # ============================================================================
   # deal with known motif
   # ============================================================================
@@ -216,9 +225,9 @@ loadHomerRes <- function(homerDir = NULL,
                                motifIndex = motifIndex,
                                type = "known")
   }else{
-    known <- NULL
-    known_pwm <- NULL
-    known_pfm <- NULL
+    known <- data.frame()
+    known_pwm <- list()
+    known_pfm <- list()
   }
 
   # ============================================================================
@@ -228,7 +237,8 @@ loadHomerRes <- function(homerDir = NULL,
   if(novo == TRUE){
     novo <- parseHomer(homerDir = homerDir,
                        motifIndex = motifIndex,
-                       type = "novo")
+                       type = "novo",
+                       pattern = pattern)
 
     novo_pwm <- parseHomerMotif(homerDir = homerDir,
                                 motifIndex = motifIndex,
@@ -238,9 +248,9 @@ loadHomerRes <- function(homerDir = NULL,
                               motifIndex = motifIndex,
                               type = "novo")
   }else{
-    novo <- NULL
-    novo_pwm <- NULL
-    novo_pfm <- NULL
+    novo <- data.frame()
+    novo_pwm <- list()
+    novo_pfm <- list()
   }
 
 

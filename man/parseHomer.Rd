@@ -4,7 +4,12 @@
 \alias{parseHomer}
 \title{parse homer output into meta information}
 \usage{
-parseHomer(homerDir = NULL, motifIndex = NULL, type = c("known", "novo"))
+parseHomer(
+  homerDir = NULL,
+  motifIndex = NULL,
+  type = c("known", "novo"),
+  pattern = NULL
+)
 }
 \arguments{
 \item{homerDir}{the path of homer output data.}
@@ -12,6 +17,8 @@ parseHomer(homerDir = NULL, motifIndex = NULL, type = c("known", "novo"))
 \item{motifIndex}{the numbers of motif index.}
 
 \item{type}{the homer output type results to choose, "known" or "novo".}
+
+\item{pattern}{The pattern to extract de novo match score, default NULL.}
 }
 \value{
 data.frame
