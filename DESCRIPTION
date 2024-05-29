@@ -12,8 +12,10 @@ RoxygenNote: 7.2.3
 Imports: 
     ComplexHeatmap,
     dplyr,
+    ggplot2,
     ggseqlogo,
     grid,
+    gtable,
     magrittr,
     methods,
     monaLisa,
