@@ -43,7 +43,7 @@ render <- function(panels, layout, x_scales, y_scales, ranges, coord, data,
   } else {
     # check position
     if(params$position == "bottom"){
-      panels <- matrix(panels, ncol = 1)
+      panels <- matrix(c(panels[1],panels[2]), ncol = 1)
     }else if(params$position == "top"){
       panels <- matrix(c(panels[2],panels[1]), ncol = 1)
     }
