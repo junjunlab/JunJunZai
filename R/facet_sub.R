@@ -39,6 +39,11 @@ render <- function(panels, layout, x_scales, y_scales, ranges, coord, data,
     } else {
       theme$panel.spacing.x
     }
+
+    if(is.null(panel_spacing)){
+      panel_spacing <- unit(0.025,"npc")
+    }
+
     panel_table <- gtable::gtable_add_col_space(panel_table, panel_spacing)
   } else {
     # check position
@@ -57,6 +62,11 @@ render <- function(panels, layout, x_scales, y_scales, ranges, coord, data,
     } else {
       theme$panel.spacing.y
     }
+
+    if(is.null(panel_spacing)){
+      panel_spacing <- unit(0.025,"npc")
+    }
+
     panel_table <- gtable::gtable_add_row_space(panel_table, panel_spacing)
   }
 
