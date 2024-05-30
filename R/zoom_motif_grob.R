@@ -31,8 +31,10 @@ zoom_motif_grob <- function(pwmMatrix = NULL,
 }
 
 
+
 #' @export
 #' @import grid
+#' @method makeContent zoom_motif_grob
 makeContent.zoom_motif_grob <- function(x){
   # get relative panel y position
   rel_y = cumsum(x$rel_height)
