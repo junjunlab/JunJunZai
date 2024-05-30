@@ -24,7 +24,7 @@ render <- function(panels, layout, x_scales, y_scales, ranges, coord, data,
   if (params$position %in% c("left","right")) {
     # Put panels in matrix and convert to a gtable
     if(params$position == "right"){
-      panels <- matrix(panels, ncol = 2)
+      panels <- matrix(c(panels[1],panels[2]), ncol = 2)
     }else if(params$position == "left"){
       panels <- matrix(c(panels[2],panels[1]), ncol = 2)
     }
